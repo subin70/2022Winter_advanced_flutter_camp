@@ -1,0 +1,17 @@
+name: flutter_spinwheel
+description: A widget that outputs items (text or image) along a pannable circular wheel/spinner with customization options.
+version: 0.1.0
+homepage: https://github.com/jerilMJ/flutter_spinwheel.git
+
+environment:
+  sdk: ">=2.3.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
