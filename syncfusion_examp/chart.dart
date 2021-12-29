@@ -56,7 +56,8 @@ class MyStatelessWidget extends StatelessWidget {
                         LineSeries<SalesData, String>(
                           // Bind data source
                             dataSource:  <SalesData>[
-                              SalesData('Jan', 35),
+                           
+                              SalesData('New', 10),            
                               SalesData('Feb', 28),
                               SalesData('Mar', 34),
                               SalesData('Apr', 32),
