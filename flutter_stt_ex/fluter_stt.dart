@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter STT Demo',
       home: MyHomePage(),
     );
   }
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // Container(
             //   padding: EdgeInsets.all(16),
             //   child: Text(
-            //     'Recognized words:',
+            //     'Recognize words:',
             //     style: TextStyle(fontSize: 20.0),
             //   ),
             //),
