@@ -134,7 +134,7 @@ class loginPage extends StatelessWidget  {
               Container(
                 child: TextButton(
                 child: Text(
-                "회원가입",
+                " button ",
                   style: TextStyle(fontSize: ScreenUtil().setSp(14),
                   color: Colors.grey,decoration: TextDecoration.underline,),
               ),
