@@ -78,6 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _lastWords = result.recognizedWords;
       //transWords = await ( GoogleTranslator().translate(_lastWords,to:'en'));
 
+      
+      
     });
   }
 
