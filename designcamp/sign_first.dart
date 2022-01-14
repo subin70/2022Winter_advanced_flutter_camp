@@ -17,52 +17,38 @@ class signFirst extends StatefulWidget {
 
 // ignore: camel_case_types
 class _signFirstState extends State<signFirst> {
-  FirebaseAuth auth = FirebaseAuth.instance;
 
-  User? get userProfile => auth.currentUser;
-  User? currentUser;
+  //late bool isFirst;
+  // firebase 콜렉션에 isFirst 라는 변수 가져와서
+  // true면 -> welcome 페이지로
+  // false 면 -> home 페이지로
+  // welcome 으로 넘어가면 이제 isFirst 변수 true-> false 로 바꿔주기
 
-  var firebaseUser = FirebaseAuth.instance.currentUser;
-  final _channelController = TextEditingController();
-
-
-
-  User? user;
-  late bool isSign ;
-  late bool isFirst;
-
+  //fb collection에서 isFirst 저장
+  late bool isFirst = false;
 
   // @override
-  // void initState(){
+  // void initState() {
   //   super.initState();
-  //   FirebaseAuth.instance.authStateChanges().listen((event) => updateUserState(event));
-  //   //user = event;
-  //   //isSign = false;
-  //   isFirst = false;
+  //   getUserDoc();
   // }
-  // //
-  // firestore.collection("users").document("${user}").get().then((DocumentSnapshot ds){
-  //   isFirst = ds.data["isFirst"];
-  // });
-
-  // updateUserState(event){
-  //   setState(() {
-  //     user = event;
-  //     if(user == null) {
-  //       isSign = false;
-  //     } else {
-  //       isSign = true;
-  //     }
-  //     final _authController = Get.find<AuthController>();
-  //     isFirst = _authController.displayName.toString().capitalizeString();
-  //   });
+  //             .data()!['isFirst'];
+  //   print(isFirst);
   // }
-
 
   @override
   Widget build(BuildContext context) {
     Config().init(context);
-
+    getUserDoc() {
+      final FirebaseAuth _auth = FirebaseAuth.instance;
+      final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+      User? user = _auth.currentUser!;
+      _firestore.collection("users").doc(user.uid).get()
+          .then((DocumentSnapshot ds) {
+        isFirst = ds.get("isFirst");
+      });
+    }
+    getUserDoc();
     return Scaffold(
       body: GetBuilder<AuthController>(
         builder: (_) {
@@ -71,7 +57,7 @@ class _signFirstState extends State<signFirst> {
             child: Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: Config.screenWidth! * 0.0),
-                child: (isFirst) ? Home() : welcome()),
+                child: (isFirst) ? welcome():  Home()),
           );
         },
       ),
